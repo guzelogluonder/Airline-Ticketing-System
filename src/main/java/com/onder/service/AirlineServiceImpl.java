@@ -17,7 +17,6 @@ import java.util.Optional;
 public class AirlineServiceImpl implements AirlineService {
 
 
-
     @Autowired
     private AirlineRepository airlineRepository;
 
@@ -63,7 +62,7 @@ public class AirlineServiceImpl implements AirlineService {
         if (airlineDb.isPresent()) {
             this.airlineRepository.delete(airlineDb.get());
         } else {
-            throw new ResourceNotFoundException("Aitline not found with id: " + id);
+            throw new ResourceNotFoundException("Airline not found with id: " + id);
         }
 
     }

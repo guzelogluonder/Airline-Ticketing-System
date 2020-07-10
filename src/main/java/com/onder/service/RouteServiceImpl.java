@@ -1,10 +1,7 @@
 package com.onder.service;
 
 import com.onder.exception.ResourceNotFoundException;
-import com.onder.model.Airline;
-import com.onder.model.Airport;
 import com.onder.model.Route;
-import com.onder.repository.AirlineRepository;
 import com.onder.repository.RouteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,12 +27,13 @@ public class RouteServiceImpl implements RouteService {
         Optional<Route> routeDb = this.routeRepository.findById(route.getId());
         if (routeDb.isPresent()) {
             Route routeUpdate = routeDb.get();
+            routeUpdate.setId(route.getId());
             routeUpdate.setOrigin(route.getOrigin());
             routeUpdate.setDestination(route.getDestination());
             routeRepository.save(routeUpdate);
             return routeUpdate;
         } else {
-            throw new ResourceNotFoundException("Airport not found with id: " + route.getId());
+            throw new ResourceNotFoundException("Route not found with id: " + route.getId());
         }
     }
 
@@ -51,9 +49,11 @@ public class RouteServiceImpl implements RouteService {
         if (routeDb.isPresent()) {
             return routeDb.get();
         } else {
-            throw new ResourceNotFoundException("Airport not found with id: " + routeDb);
+            throw new ResourceNotFoundException("Route not found with id: " + routeDb);
         }
     }
+
+
 
     @Override
     public void deleteRoute(Long id) {
@@ -61,7 +61,7 @@ public class RouteServiceImpl implements RouteService {
         if (routeDb.isPresent()) {
             this.routeRepository.delete(routeDb.get());
         } else {
-            throw new ResourceNotFoundException("Airport not found with id: " + id);
+            throw new ResourceNotFoundException("Route not found with id: " + id);
 
         }
 

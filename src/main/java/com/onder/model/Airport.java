@@ -63,4 +63,5 @@ public class Airport {
     public void setIataCode(String iataCode) {
         this.iataCode = iataCode;
     }
+
 }
