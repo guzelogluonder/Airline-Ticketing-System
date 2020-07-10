@@ -12,8 +12,12 @@ import java.util.List;
 @RestController
 public class AirlineController {
 
-    @Autowired
-    private AirlineService airlineService;
+
+    private final AirlineService airlineService;
+
+    public AirlineController(AirlineService airlineService) {
+        this.airlineService = airlineService;
+    }
 
     @GetMapping("/airlines")
     public ResponseEntity<List<Airline>> getAllAirlines() {
@@ -40,5 +44,9 @@ public class AirlineController {
     public HttpStatus deleteAirline(@PathVariable long id) {
         this.airlineService.deleteAirline(id);
         return HttpStatus.OK;
+    }
+
+    public AirlineService getAirlineService() {
+        return airlineService;
     }
 }

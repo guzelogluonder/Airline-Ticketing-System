@@ -4,6 +4,8 @@ import com.onder.exception.ResourceNotFoundException;
 import com.onder.model.Airline;
 import com.onder.repository.AirlineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -13,6 +15,8 @@ import java.util.Optional;
 @Service
 @Transactional
 public class AirlineServiceImpl implements AirlineService {
+
+
 
     @Autowired
     private AirlineRepository airlineRepository;
@@ -25,7 +29,6 @@ public class AirlineServiceImpl implements AirlineService {
     @Override
     public Airline updateAirline(Airline airline) {
         Optional<Airline> airlineDb = this.airlineRepository.findById(airline.getId());
-
         if (airlineDb.isPresent()) {
             Airline airlineUpdate = airlineDb.get();
             airlineUpdate.setId(airline.getId());

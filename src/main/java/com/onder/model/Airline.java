@@ -64,6 +64,4 @@ public class Airline {
     public void setUpdateAt(Date updateAt) {
         this.updateAt = updateAt;
     }
-
-
 }
