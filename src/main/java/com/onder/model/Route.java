@@ -7,6 +7,8 @@ import java.util.Date;
 
 @Entity
 @Table(name = "routes")
+@NamedQuery(name = "Route.getByOriginDestination",
+        query = "SELECT c FROM Route c WHERE c.origin = ?1 AND c.destination = ?2")
 public class Route {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

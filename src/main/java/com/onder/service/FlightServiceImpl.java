@@ -41,19 +41,13 @@ public class FlightServiceImpl implements FlightService {
             throw new ResourceNotFoundException("Airline not found with Destination: " + flight.getDestinationIataCode());
         }
         Airline airline = airlineRepository.getByTwoLetterCode(flight.getTwoLetterCode());
-        Route route1 = routeRepository.getByOrigin(flight.getOriginIataCode());
-        Route route2 = routeRepository.getByDestination(flight.getDestinationIataCode());
+        Route route1 = routeRepository.getByOriginDestination(flight.getOriginIataCode(),flight.getDestinationIataCode());
 
         if (airline == null) {
             throw new IllegalArgumentException("Invalid airline Code!");
         }
         if (route1 == null) {
-            throw new IllegalArgumentException("Invalid airline Code!");
-
-        }
-        if (route2 == null) {
-            throw new IllegalArgumentException("Invalid airline Code!");
-
+            throw new IllegalArgumentException("Invalid route Code!");
         }
         return flightRepository.save(flight);
     }

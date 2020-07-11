@@ -18,6 +18,7 @@ public class Ticket {
     @Column(name = "destinationIataCode")
     private String destinationIataCode;
 
+    @Colu
     @CreationTimestamp
     private Date createdAt;
 

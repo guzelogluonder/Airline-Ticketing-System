@@ -33,10 +33,10 @@ public class RouteServiceImpl implements RouteService {
         Airport airport = airportRepository.getByIataCode(route.getDestination());
         Airport airport1 = airportRepository.getByIataCode(route.getOrigin());
         if (airport == null) {
-            throw new IllegalArgumentException("Invalid airline code!");
+            throw new IllegalArgumentException("Invalid airport code!");
         }
         if (airport1 == null) {
-            throw new IllegalArgumentException("Invalid airline code!");
+            throw new IllegalArgumentException("Invalid airport code!");
 
         }
         return routeRepository.save(route);
