@@ -17,11 +17,20 @@ public class AirportServiceImpl implements AirportService {
     @Autowired
     private AirportRepository airportRepository;
 
+    /*
+     * creating airports
+     * @param airport airport knowledges in plain format
+     * @return saved airport knowledges
+     * */
     @Override
     public Airport createAirport(Airport airport) {
         return airportRepository.save(airport);
     }
 
+    /*
+     *updating airports
+     * @param airport airport knowledges in plain format.
+     * */
     @Override
     public Airport updateAirport(Airport airport) {
         Optional<Airport> airportDb = this.airportRepository.findById(airport.getId());

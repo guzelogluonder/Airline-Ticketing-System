@@ -1,9 +1,7 @@
 package com.onder.controller;
 
-import com.onder.model.Route;
 import com.onder.model.Ticket;
-import com.onder.repository.TicketRepository;
-import com.onder.service.RouteService;
+
 import com.onder.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +18,11 @@ public class TicketController {
     @GetMapping("/tickets")
     public ResponseEntity<List<Ticket>> getAllTickets() {
         return ResponseEntity.ok().body(ticketService.getAllTicket());
+    }
+
+    @GetMapping("/tickets/{ticketNumber}")
+    public ResponseEntity<Ticket> getByTicketNumber(@PathVariable long ticketNumber) {
+        return ResponseEntity.ok().body(ticketService.getByTicketNumber(ticketNumber));
     }
 
     @GetMapping("/tickets/{id}")
@@ -43,4 +46,9 @@ public class TicketController {
         return HttpStatus.OK;
     }
 
+    @DeleteMapping("/tickets/{ticketNumber}")
+    public HttpStatus deleteByTicketNumber(@PathVariable long ticketNumber) {
+        this.ticketService.deleteTicket(ticketNumber);
+        return HttpStatus.OK;
+    }
 }

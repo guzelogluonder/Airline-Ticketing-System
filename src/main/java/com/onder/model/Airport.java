@@ -11,19 +11,20 @@ public class Airport {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
+    //airport's name
     @Column(name = "name")
     private String name;
-
+    //airport's iatacode
     @Column(name = "iataCode")
     private String iataCode;
-
+    // date of creating
     @CreationTimestamp
     private Date createdAt;
-
+    //date of updating
     @CreationTimestamp
     private Date updateAt;
 
+    //getters and setters
     public Date getCreatedAt() {
         return createdAt;
     }

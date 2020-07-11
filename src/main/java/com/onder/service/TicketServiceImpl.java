@@ -108,4 +108,14 @@ public class TicketServiceImpl implements TicketService {
 
         }
     }
+
+    @Override
+    public Ticket getByTicketNumber(long ticketNumber) {
+        Optional<Ticket> ticketDb = this.ticketRepository.getByTicketNumber(ticketNumber);
+        if (ticketDb.isPresent()) {
+            return ticketDb.get();
+        } else {
+            throw new ResourceNotFoundException("Ticket not found with Ticket number : " + ticketDb);
+        }
+    }
 }

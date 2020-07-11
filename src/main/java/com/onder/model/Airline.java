@@ -12,19 +12,20 @@ public class Airline {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
+    //airline's name
     @Column(name = "name")
     private String name;
-
+    //airline's two letter code
     @Column(name = "twoLetterCode")
     private String twoLetterCode;
-
+    // date of creating
     @CreationTimestamp
     private Date createdAt;
-
+    // date of updating
     @CreationTimestamp
     private Date updateAt;
 
+    //getters and setters
     public long getId() {
         return id;
     }

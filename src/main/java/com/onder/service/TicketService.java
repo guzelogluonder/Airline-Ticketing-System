@@ -13,5 +13,7 @@ public interface TicketService {
 
     Ticket getTicketById(Long ticketId);
 
+    Ticket getByTicketNumber(long ticketNumber);
+
     void deleteTicket(Long id);
 }
