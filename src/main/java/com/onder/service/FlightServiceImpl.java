@@ -1,11 +1,15 @@
 package com.onder.service;
 
 import com.onder.exception.ResourceNotFoundException;
+import com.onder.model.Airline;
 import com.onder.model.Flight;
+import com.onder.model.Route;
 import com.onder.repository.AirlineRepository;
 import com.onder.repository.FlightRepository;
+import com.onder.repository.RouteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -19,8 +23,38 @@ public class FlightServiceImpl implements FlightService {
     @Autowired
     private FlightRepository flightRepository;
 
+    @Autowired
+    private AirlineRepository airlineRepository;
+
+    @Autowired
+    private RouteRepository routeRepository;
+
     @Override
     public Flight createFlight(Flight flight) {
+        if (StringUtils.isEmpty(flight.getTwoLetterCode())) {
+            throw new ResourceNotFoundException("Airline not found with twoLetterCode: " + flight.getTwoLetterCode());
+        }
+        if (StringUtils.isEmpty(flight.getOriginIataCode())) {
+            throw new ResourceNotFoundException("Airline not found with origin: " + flight.getOriginIataCode());
+        }
+        if (StringUtils.isEmpty(flight.getDestinationIataCode())) {
+            throw new ResourceNotFoundException("Airline not found with Destination: " + flight.getDestinationIataCode());
+        }
+        Airline airline = airlineRepository.getByTwoLetterCode(flight.getTwoLetterCode());
+        Route route1 = routeRepository.getByOrigin(flight.getOriginIataCode());
+        Route route2 = routeRepository.getByDestination(flight.getDestinationIataCode());
+
+        if (airline == null) {
+            throw new IllegalArgumentException("Invalid airline Code!");
+        }
+        if (route1 == null) {
+            throw new IllegalArgumentException("Invalid airline Code!");
+
+        }
+        if (route2 == null) {
+            throw new IllegalArgumentException("Invalid airline Code!");
+
+        }
         return flightRepository.save(flight);
     }
 

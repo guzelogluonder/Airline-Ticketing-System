@@ -5,5 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 
 public interface RouteRepository extends JpaRepository<Route, Long> {
-
+    Route getByOrigin(String origin);
+    Route getByDestination(String destination);
 }
