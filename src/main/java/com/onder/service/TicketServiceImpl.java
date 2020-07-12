@@ -22,6 +22,12 @@ public class TicketServiceImpl implements TicketService {
     @Autowired
     private FlightRepository flightRepository;
 
+    /*
+     * creating ticket
+     * @param ticket ticket knowledges in plain format
+     * checking route and flight's contingent
+     * @return saving ticket
+     * */
     @Override
     public Ticket createTicket(Ticket ticket) {
         if (StringUtils.isEmpty(ticket.getOriginIataCode())) {
@@ -64,6 +70,11 @@ public class TicketServiceImpl implements TicketService {
         return ticketRepository.save(ticket);
     }
 
+    /*
+     * updating ticket
+     * @param ticket ticket knowledges in plain format
+     * @return update ticket
+     * */
     @Override
     public Ticket updateTicket(Ticket ticket) {
         Optional<Ticket> ticketDb = this.ticketRepository.findById(ticket.getId());
@@ -83,11 +94,20 @@ public class TicketServiceImpl implements TicketService {
         }
     }
 
+    /*
+     *gets all tickets
+     * @return finding all tickets from DB.
+     * */
     @Override
     public List<Ticket> getAllTicket() {
         return this.ticketRepository.findAll();
     }
 
+    /*
+    * getting ticket by id
+    * @param ticketId
+    * @return ticket knowledge by id
+    * */
     @Override
     public Ticket getTicketById(Long ticketId) {
         Optional<Ticket> ticketDb = this.ticketRepository.findById(ticketId);
@@ -98,6 +118,11 @@ public class TicketServiceImpl implements TicketService {
         }
     }
 
+    /*
+    * deleting ticket by id
+    * @param id in plain format
+    * @return deletes ticket from DB by id
+    * */
     @Override
     public void deleteTicket(Long id) {
         Optional<Ticket> ticketDb = this.ticketRepository.findById(id);
@@ -109,6 +134,11 @@ public class TicketServiceImpl implements TicketService {
         }
     }
 
+    /*
+    * getting ticket Number by Ticket number
+    * @param ticketNumber in plain format
+    * @return ticket knowledges by ticketNumber
+    * */
     @Override
     public Ticket getByTicketNumber(long ticketNumber) {
         Optional<Ticket> ticketDb = this.ticketRepository.getByTicketNumber(ticketNumber);

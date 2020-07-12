@@ -34,6 +34,12 @@ public class FlightServiceImpl implements FlightService {
     @Autowired
     private TicketRepository ticketRepository;
 
+    /*
+     * creating flight to route
+     * checking airline two letter code and origin iata code and destination code
+     * @param flight flight knowledges in plain format
+     * @return saving to DB flight knowledges
+     * */
     @Override
     public Flight createFlight(Flight flight) {
         if (StringUtils.isEmpty(flight.getTwoLetterCode())) {
@@ -56,6 +62,11 @@ public class FlightServiceImpl implements FlightService {
         return flightRepository.save(flight);
     }
 
+    /*
+     * updating flight
+     * @param flight flight knowledges in plain format
+     * @return updating flight
+     * */
     @Override
     public Flight updateFlight(Flight flight) {
         Optional<Flight> flightDb = this.flightRepository.findById(flight.getId());
@@ -73,12 +84,20 @@ public class FlightServiceImpl implements FlightService {
         }
 
     }
-
+    /*
+    * getting all flights
+    * @return finds all flights
+    * */
     @Override
     public List<Flight> getAllFlights() {
         return this.flightRepository.findAll();
     }
 
+    /*
+    * getting flights by Id
+    * @param flightId flight's Id
+    * @return gets flights by Id
+    * */
     @Override
     public Flight getFlightById(Long flightId) {
         Optional<Flight> flightDb = this.flightRepository.findById(flightId);
@@ -89,6 +108,11 @@ public class FlightServiceImpl implements FlightService {
         }
     }
 
+    /*
+    * deleting flight by Id
+    * @param id
+    * @return deletes flight by id
+    * */
     @Override
     public void deleteFlight(Long id) {
         Optional<Flight> flightDb = this.flightRepository.findById(id);

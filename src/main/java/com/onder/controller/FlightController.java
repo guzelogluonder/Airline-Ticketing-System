@@ -19,27 +19,32 @@ public class FlightController {
     @Autowired
     private FlightService flightService;
 
+    //gets all flights
     @GetMapping("/flights")
     public ResponseEntity<List<Flight>> getAllFlights() {
         return ResponseEntity.ok().body(flightService.getAllFlights());
     }
 
+    //gets filght by id
     @GetMapping("/flights/{id}")
     public ResponseEntity<Flight> getFlightById(@PathVariable long id) {
         return ResponseEntity.ok().body(flightService.getFlightById(id));
     }
 
+    //creates flight
     @PostMapping("/flights")
     public ResponseEntity<Flight> createFlight(@RequestBody Flight flight) {
 
         return ResponseEntity.ok().body(this.flightService.createFlight(flight));
     }
 
+    //updates flight by id
     @PutMapping("/flights/{id}")
     public ResponseEntity<Flight> updateFlight(@PathVariable long id, Flight flight) {
         return ResponseEntity.ok().body(this.flightService.updateFlight(flight));
     }
 
+    //deletes flight by id
     @DeleteMapping("/flights/{id}")
     public HttpStatus deleteFlight(@PathVariable long id) {
         this.flightService.deleteFlight(id);

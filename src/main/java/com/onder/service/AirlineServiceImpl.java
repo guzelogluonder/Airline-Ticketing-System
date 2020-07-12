@@ -19,19 +19,20 @@ public class AirlineServiceImpl implements AirlineService {
     private AirlineRepository airlineRepository;
 
     /*
-    * Creates airline to DB.
-    * @param airline name and two letter code of airline
-    * @return saved airline knowledges
-    * */
+     * Creates airline to DB.
+     * @param airline name and two letter code of airline
+     * @return saved airline knowledges
+     * */
     @Override
     public Airline createAirline(Airline airline) {
         return airlineRepository.save(airline);
     }
+
     /*
-    * Updates airline to DB.
-    * @param airline  airline knowledges
-    * @return saved airline updates
-    * */
+     * Updates airline to DB.
+     * @param airline  airline knowledges
+     * @return saved airline updates
+     * */
     @Override
     public Airline updateAirline(Airline airline) {
         Optional<Airline> airlineDb = this.airlineRepository.findById(airline.getId());
@@ -49,18 +50,18 @@ public class AirlineServiceImpl implements AirlineService {
     }
 
     /* getting all airlines on the DB.
-    *@return all airlines on DB.
-    */
+     *@return all airlines on DB.
+     */
     @Override
     public List<Airline> getAllAirlines() {
         return this.airlineRepository.findAll();
     }
 
     /*
-    * gets airlines by Id.
-    * @param airlineId  Id in plain format.
-    * @return airline knowledge on DB
-    * */
+     * gets airlines by Id.
+     * @param airlineId  Id in plain format.
+     * @return airline knowledge on DB
+     * */
     @Override
     public Airline getAirlineById(Long airlineId) {
         Optional<Airline> airlineDb = this.airlineRepository.findById(airlineId);
@@ -72,9 +73,9 @@ public class AirlineServiceImpl implements AirlineService {
     }
 
     /*
-    * deleting airline with id knowledge
-    * @param id id in plain format.
-    * */
+     * deleting airline with id knowledge
+     * @param id id in plain format.
+     * */
     @Override
     public void deleteAirline(Long id) {
         Optional<Airline> airlineDb = this.airlineRepository.findById(id);
