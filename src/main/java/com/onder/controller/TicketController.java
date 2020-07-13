@@ -22,15 +22,9 @@ public class TicketController {
     }
 
     //gets ticket by ticket number
-    @GetMapping("/tickets/{ticketNumber}")
+    @GetMapping("/tickets/ticketNumber/{ticketNumber}")
     public ResponseEntity<Ticket> getByTicketNumber(@PathVariable long ticketNumber) {
         return ResponseEntity.ok().body(ticketService.getByTicketNumber(ticketNumber));
-    }
-
-    //gets ticket by id
-    @GetMapping("/tickets/{id}")
-    public ResponseEntity<Ticket> getTicketById(@PathVariable long id) {
-        return ResponseEntity.ok().body(ticketService.getTicketById(id));
     }
 
     //creates ticket
@@ -43,13 +37,6 @@ public class TicketController {
     @PutMapping("/tickets/{id}")
     public ResponseEntity<Ticket> updateTicket(@PathVariable long id, Ticket ticket) {
         return ResponseEntity.ok().body(this.ticketService.updateTicket(ticket));
-    }
-
-    //deletes ticket by id
-    @DeleteMapping("/tickets/{id}")
-    public HttpStatus deleteTicket(@PathVariable long id) {
-        this.ticketService.deleteTicket(id);
-        return HttpStatus.OK;
     }
 
     //deletes ticket by ticket number

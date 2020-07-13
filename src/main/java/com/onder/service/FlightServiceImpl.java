@@ -4,7 +4,6 @@ import com.onder.exception.ResourceNotFoundException;
 import com.onder.model.Airline;
 import com.onder.model.Flight;
 import com.onder.model.Route;
-import com.onder.model.Ticket;
 import com.onder.repository.AirlineRepository;
 import com.onder.repository.FlightRepository;
 import com.onder.repository.RouteRepository;
@@ -84,20 +83,21 @@ public class FlightServiceImpl implements FlightService {
         }
 
     }
+
     /*
-    * getting all flights
-    * @return finds all flights
-    * */
+     * getting all flights
+     * @return finds all flights
+     * */
     @Override
     public List<Flight> getAllFlights() {
         return this.flightRepository.findAll();
     }
 
     /*
-    * getting flights by Id
-    * @param flightId flight's Id
-    * @return gets flights by Id
-    * */
+     * getting flights by Id
+     * @param flightId flight's Id
+     * @return gets flights by Id
+     * */
     @Override
     public Flight getFlightById(Long flightId) {
         Optional<Flight> flightDb = this.flightRepository.findById(flightId);
@@ -109,10 +109,10 @@ public class FlightServiceImpl implements FlightService {
     }
 
     /*
-    * deleting flight by Id
-    * @param id
-    * @return deletes flight by id
-    * */
+     * deleting flight by Id
+     * @param id
+     * @return deletes flight by id
+     * */
     @Override
     public void deleteFlight(Long id) {
         Optional<Flight> flightDb = this.flightRepository.findById(id);
