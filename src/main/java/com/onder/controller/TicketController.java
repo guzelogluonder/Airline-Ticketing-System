@@ -40,7 +40,7 @@ public class TicketController {
     }
 
     //deletes ticket by ticket number
-    @DeleteMapping("/tickets/{ticketNumber}")
+    @DeleteMapping("/tickets/ticketNumber/{ticketNumber}")
     public HttpStatus deleteByTicketNumber(@PathVariable long ticketNumber) {
         this.ticketService.deleteTicket(ticketNumber);
         return HttpStatus.OK;
