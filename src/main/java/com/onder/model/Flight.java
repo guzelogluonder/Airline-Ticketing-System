@@ -1,8 +1,11 @@
 package com.onder.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.*;
+import jakarta.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.NamedQuery;
 
-import javax.persistence.*;
 import java.util.Date;
 import java.util.Random;
 

@@ -1,10 +1,10 @@
 package com.onder.model;
 
 import com.onder.repository.TicketRepository;
+import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.*;
 import java.util.Date;
 import java.util.Random;
 
